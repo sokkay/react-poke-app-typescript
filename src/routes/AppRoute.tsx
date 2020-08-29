@@ -1,16 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { HomeScreen } from '../components/home/HomeScreen';
 import { Sidebar } from '../components/shared/Sidebar';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTypesOfPokemons } from '../actions/pokemons';
+import { Appbar } from '../components/shared/Appbar';
 
 export const AppRoute = () => {
+    const dispatch = useDispatch();
+    const ui = useSelector((state: any) => state.ui);
+
+    //carga los tipos de pokemon
+    useEffect(() => {
+        dispatch(getTypesOfPokemons());
+    }, [dispatch]);
+
+    if (ui.loading) {
+        return <h1>Hola</h1>;
+    }
+
     return (
         <Router>
-            <div className='flex flex-row overflow-hidden w-screen h-screen'>
-                <Sidebar />
-                <Switch>
-                    <Route exact path='/' component={HomeScreen} />
-                </Switch>
+            <div className='overflow-hidden w-screen h-screen'>
+                <Appbar />
+                <div className='flex flex-row h-full'>
+                    <Sidebar />
+                    <Switch>
+                        <Route exact path='/' component={HomeScreen} />
+                    </Switch>
+                </div>
             </div>
         </Router>
     );

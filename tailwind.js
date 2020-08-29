@@ -6,6 +6,7 @@ module.exports = {
   separator: ':',
   theme: {
     screens: {
+      xs: '360px',
       sm: '640px',
       md: '768px',
       lg: '1024px',
@@ -668,7 +669,7 @@ module.exports = {
     alignContent: ['responsive'],
     alignItems: ['responsive'],
     alignSelf: ['responsive'],
-    appearance: ['responsive'],
+    appearance: ['responsive', 'focus', 'active'],
     backgroundAttachment: ['responsive'],
     backgroundClip: ['responsive'],
     backgroundColor: ['responsive', 'hover', 'focus', 'active'],
@@ -682,8 +683,8 @@ module.exports = {
     borderColor: ['responsive', 'hover', 'focus'],
     borderOpacity: ['responsive', 'hover', 'focus'],
     borderRadius: ['responsive'],
-    borderStyle: ['responsive'],
-    borderWidth: ['responsive'],
+    borderStyle: ['responsive', 'focus'],
+    borderWidth: ['responsive', 'focus'],
     boxShadow: ['responsive', 'hover', 'focus'],
     boxSizing: ['responsive'],
     container: ['responsive'],
@@ -768,6 +769,7 @@ module.exports = {
     transitionDuration: ['responsive'],
     transitionDelay: ['responsive'],
     animation: ['responsive'],
+    rounded: ['focus']
   },
   corePlugins: {},
   plugins: [],

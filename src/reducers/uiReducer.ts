@@ -1,7 +1,7 @@
 import { types } from '../types/types';
 import { Action } from '../interfaces/action';
 
-interface Iui {
+export interface Iui {
     loading: boolean;
     msgError?: string;
 }
