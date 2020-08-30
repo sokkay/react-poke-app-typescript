@@ -1,17 +1,17 @@
 import { types } from '../types/types';
 import { Action } from '../interfaces/action';
 
-export interface Iui {
+export interface IuiState {
     loading: boolean;
-    msgError?: string;
+    msgError: string | null;
 }
 
 const initialState = {
     loading: false,
     msgError: null,
-};
+} as IuiState;
 
-export const uiReducer = (state = initialState, action: Action<Iui>) => {
+export const uiReducer = (state = initialState, action: Action<IuiState>) => {
     switch (action.type) {
         case types.uiSetError:
             return {

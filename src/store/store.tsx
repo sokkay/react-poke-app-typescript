@@ -4,6 +4,7 @@ import { uiReducer } from '../reducers/uiReducer';
 import { pokemonTypesReducer } from '../reducers/pokemonTypesReducer';
 import { pokemonTypeSelectedReducer } from '../reducers/pokemonTypeSelectedReducer';
 import { pokemonReducer } from '../reducers/pokemonReducer';
+import { pokemonUIReducer } from '../reducers/pokemonUIReducer';
 
 //esta declaracion es utilizada en typescript
 declare global {
@@ -21,7 +22,8 @@ const reducers = combineReducers({
     ui: uiReducer,
     pokemon: pokemonReducer,
     pokemonTypes: pokemonTypesReducer,
-    pokemonTypeSelected: pokemonTypeSelectedReducer
+    pokemonTypeSelected: pokemonTypeSelectedReducer,
+    pokemonUI: pokemonUIReducer,
 });
 
 //finalmente se crea el store

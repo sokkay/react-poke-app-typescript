@@ -1,7 +1,11 @@
 import React from 'react';
 import { IPokemonTypesResult } from '../../interfaces/pokemonTypes';
-import { useDispatch } from 'react-redux';
-import { setSelectedPokemonType, getPokemonsByType } from '../../actions/pokemons';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    setSelectedPokemonType,
+    getPokemonsByType,
+} from '../../actions/pokemons';
+import { IPokemonUIState } from '../../reducers/pokemonUIReducer';
 
 interface Props {
     pt: IPokemonTypesResult;
@@ -11,6 +15,8 @@ interface Props {
 
 export const TypeButton = ({ pt, selected, color }: Props) => {
     const dispatch = useDispatch();
+
+    const {loading} = useSelector<{ pokemonUI: IPokemonUIState }, IPokemonUIState>((state) => state.pokemonUI);
 
     const handleClick = () => {
         dispatch(setSelectedPokemonType(pt));
@@ -41,7 +47,7 @@ export const TypeButton = ({ pt, selected, color }: Props) => {
             onClick={handleClick}
             style={buttonStyle}
             type='button'
-            disabled={selected}
+            disabled={selected || loading}
             className='btn py-2 w-full my-3 font-bold focus:outline-none rounded-md'
         >
             <p style={textStyle}>{pt.name.toUpperCase()}</p>

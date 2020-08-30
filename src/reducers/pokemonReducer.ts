@@ -18,7 +18,7 @@ export const pokemonReducer = (
         case types.pokemonGetByType:
             return {
                 ...state,
-                pokemons: action.payload,
+                pokemons: [...action.payload],
             };
         default:
             return state;

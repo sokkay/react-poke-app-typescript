@@ -8,7 +8,7 @@ export const Appbar = () => {
 
     const handleClick = () => setToggle(!toggle);
     return (
-        <div className='bg-white h-16 py-4 shadow-md flex flex-row justify-between px-12 z-20 sticky top-0'>
+        <div className='bg-white h-16 shadow-md flex flex-row justify-between px-12 z-20 sticky top-0 items-center'>
             <div></div>
             <div>
                 <div

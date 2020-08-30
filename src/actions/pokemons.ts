@@ -41,6 +41,7 @@ export const setSelectedPokemonType = (
 
 export const getPokemonsByType = (pokemonType: IPokemonTypesResult) => {
     return async (dispatch: Dispatch) => {
+        dispatch(startLoadingPokemons());
         try {
             const { data: pokemonPartial } = await Axios.get<IPokemonType>(
                 pokemonType.url
@@ -51,17 +52,26 @@ export const getPokemonsByType = (pokemonType: IPokemonTypesResult) => {
 
             const axiosResponse = await Promise.all(pokemonsPromise);
             const pokemons = axiosResponse.map((response) => response.data);
-
+            await timeout(200);
             dispatch(setPokemonsByType(pokemons));
-
         } catch (error) {
             console.error(error);
             dispatch(setError(error.toString()));
         } finally {
-
+            dispatch(finishLoadingPokemons());
         }
     };
 };
+
+export const startLoadingPokemons = (): Action<boolean> => ({
+    type: types.pokemonGetPokemonsLoading,
+    payload: true,
+});
+
+export const finishLoadingPokemons = (): Action<boolean> => ({
+    type: types.pokemonGetPokemonsLoading,
+    payload: false,
+});
 
 export const setPokemonsByType = (
     pokemons: IPokemon[]
@@ -69,3 +79,7 @@ export const setPokemonsByType = (
     type: types.pokemonGetByType,
     payload: pokemons,
 });
+
+function timeout(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}

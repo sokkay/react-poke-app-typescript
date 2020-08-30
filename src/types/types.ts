@@ -5,8 +5,9 @@ export const types = {
     uiSetError: '[UI] Set Error',
     uiRemoveError: '[UI] Remove Error',
     //Pokemon Selected type
-    pokemonSelectedType: "[Pokemon] Selected type",
+    pokemonSelectedType: '[Pokemon] Selected type',
     //Pokemons generals, Gets of data
+    pokemonGetPokemonsLoading: '[Pokemon] Get Pokemons Loading',
     pokemonGetById: '[Pokemon] Get By ID',
     pokemonGetByName: '[Pokemon] Get By Name',
     pokemonGetByType: '[Pokemon] Get By Type',
