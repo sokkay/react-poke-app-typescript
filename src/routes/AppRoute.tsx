@@ -4,7 +4,6 @@ import { HomeScreen } from '../components/home/HomeScreen';
 import { Sidebar } from '../components/shared/Sidebar';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTypesOfPokemons } from '../actions/pokemons';
-import { Appbar } from '../components/shared/Appbar';
 
 export const AppRoute = () => {
     const dispatch = useDispatch();
@@ -21,8 +20,7 @@ export const AppRoute = () => {
 
     return (
         <Router>
-            <div className='overflow-hidden w-screen h-screen'>
-                <Appbar />
+            <div className='overflow-y-hidden w-screen h-screen flex flex-col'>
                 <div className='flex flex-row h-full'>
                     <Sidebar />
                     <Switch>
